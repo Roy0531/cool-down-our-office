@@ -4,7 +4,8 @@ import Layout from "@/layouts/Layout.astro";
 
 <Layout>
   <main class="wrapper">
-    <a href="/iitomo" class="linkAsk">オフィス、冷やしてくれるかな？</a>
+    <h1 class="title">いいとも！</h1>
+    <a href="/" class="linkBack">トップへ戻る</a>
   </main>
 </Layout>
 
@@ -13,13 +14,17 @@ import Layout from "@/layouts/Layout.astro";
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .linkAsk {
-    font-size: 2rem;
+  .title {
     font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .linkBack {
     text-decoration: underline;
   }
 </style>
