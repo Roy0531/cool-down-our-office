@@ -1,6 +1,9 @@
 // hooks/useSensorData.js
 import { useEffect, useRef, useState } from "react";
 
+const WEBSOCKET_URL = "ws://localhost:8080";
+const SENSOR_TYPE_ADDRESS = "accel";
+
 export const useSensorData = () => {
   const [accelerometer, setAccelerometer] = useState({ x: 0, y: 0, z: 0 });
 
@@ -8,7 +11,7 @@ export const useSensorData = () => {
 
   useEffect(() => {
     const connectWebSocket = () => {
-      wsRef.current = new WebSocket("ws://localhost:8080");
+      wsRef.current = new WebSocket(WEBSOCKET_URL);
 
       wsRef.current.onopen = () => {
         setAccelerometer({ x: 0, y: 0, z: 0 });
@@ -18,7 +21,13 @@ export const useSensorData = () => {
       wsRef.current.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
-          console.log("Received data:", data);
+          if (data.address.includes(SENSOR_TYPE_ADDRESS)) {
+            setAccelerometer({
+              x: data.args[0],
+              y: data.args[1],
+              z: data.args[2]
+            });
+          }
         } catch (error) {
           console.error("Error parsing message:", error);
         }

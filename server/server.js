@@ -17,7 +17,8 @@ oscPort.on("message", (oscMsg) => {
   if (oscMsg.address.includes("deviceinfo")) {
     return;
   }
-  console.log("Received OSC message:", oscMsg);
+  // デバッグ用: 受信したOSCメッセージをコンソールに出力
+  // console.log("Received OSC message:", oscMsg);
   wss.clients.forEach((client) => {
     if (client.readyState === client.OPEN) {
       client.send(

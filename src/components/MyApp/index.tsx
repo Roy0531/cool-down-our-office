@@ -5,6 +5,10 @@ export const MyApp = () => {
   return (
     <div>
       <h1 className="title">いいとも！</h1>
+      <p className="description">
+        Accelerometer Data: x: {accelerometer.x}, y: {accelerometer.y}, z:{" "}
+        {accelerometer.z}
+      </p>
       <a href="/" className="linkBack">
         トップへ戻る
       </a>
