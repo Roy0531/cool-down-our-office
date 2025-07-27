@@ -1,11 +1,11 @@
 ---
+import { MyApp } from "@/components/MyApp";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
   <main class="wrapper">
-    <h1 class="title">いいとも！</h1>
-    <a href="/" class="linkBack">トップへ戻る</a>
+    <MyApp client:load />
   </main>
 </Layout>
 
