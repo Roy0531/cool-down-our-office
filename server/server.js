@@ -18,16 +18,16 @@ oscPort.on("message", (oscMsg) => {
     return;
   }
   console.log("Received OSC message:", oscMsg);
-  // wss.clients.forEach((client) => {
-  //   if (client.readyState === client.OPEN) {
-  //     client.send(
-  //       JSON.stringify({
-  //         address: oscMsg.address,
-  //         args: oscMsg.args
-  //       })
-  //     );
-  //   }
-  // });
+  wss.clients.forEach((client) => {
+    if (client.readyState === client.OPEN) {
+      client.send(
+        JSON.stringify({
+          address: oscMsg.address,
+          args: oscMsg.args
+        })
+      );
+    }
+  });
 });
 
 oscPort.on("ready", () => {
