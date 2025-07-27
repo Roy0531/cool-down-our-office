@@ -14,14 +14,16 @@ const oscPort = new osc.UDPPort({
 
 oscPort.on("message", (oscMsg) => {
   // WebSocketクライアントに転送
+  if (oscMsg.address.includes("deviceinfo")) {
+    return;
+  }
   console.log("Received OSC message:", oscMsg);
   // wss.clients.forEach((client) => {
   //   if (client.readyState === client.OPEN) {
   //     client.send(
   //       JSON.stringify({
   //         address: oscMsg.address,
-  //         args: oscMsg.args,
-  //         timestamp: Date.now()
+  //         args: oscMsg.args
   //       })
   //     );
   //   }
