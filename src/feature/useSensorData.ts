@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const WEBSOCKET_URL = "ws://localhost:8080";
+// 他の情報の時はaddressやargsの中身が変わる
+// 例)address: '/ZIGSIM/cKYb7clGdnBOLwJ4/accel',
 const SENSOR_TYPE_ADDRESS = "accel";
 
 export const useSensorData = () => {

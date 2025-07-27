@@ -3,17 +3,20 @@ import express from "express";
 import osc from "osc";
 import { WebSocketServer } from "ws";
 
+const WEB_SOCKET_PORT = 8080;
+const SENSOR_PORT = 3333;
+
 const app = express();
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ port: WEB_SOCKET_PORT });
 
 // OSC over UDP受信
 const oscPort = new osc.UDPPort({
   localAddress: "0.0.0.0",
-  localPort: 3333
+  localPort: SENSOR_PORT
 });
 
 oscPort.on("message", (oscMsg) => {
-  // WebSocketクライアントに転送
+  // デバイス情報も飛んでくるけど使わない
   if (oscMsg.address.includes("deviceinfo")) {
     return;
   }
