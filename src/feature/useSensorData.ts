@@ -6,6 +6,10 @@ const WEBSOCKET_URL = "ws://localhost:8080";
 // 例)address: '/ZIGSIM/cKYb7clGdnBOLwJ4/accel',
 const SENSOR_TYPE_ADDRESS = "accel";
 
+const roundValue = (value: number) => {
+  return Math.round(value * 100) / 100; // 小数点以下2桁まで丸める
+};
+
 export const useSensorData = () => {
   const [accelerometer, setAccelerometer] = useState({ x: 0, y: 0, z: 0 });
 
@@ -25,9 +29,9 @@ export const useSensorData = () => {
           const data = JSON.parse(event.data);
           if (data.address.includes(SENSOR_TYPE_ADDRESS)) {
             setAccelerometer({
-              x: data.args[0],
-              y: data.args[1],
-              z: data.args[2]
+              x: roundValue(data.args[0]),
+              y: roundValue(data.args[1]),
+              z: roundValue(data.args[2])
             });
           }
         } catch (error) {
