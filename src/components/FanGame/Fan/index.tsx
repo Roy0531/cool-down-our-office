@@ -61,7 +61,9 @@ export function Fan({
         </div>
       </motion.div>
 
-      {isActive && <div className="fan__instruction">クリックして冷やす！</div>}
+      {isActive && (
+        <div className="fan__instruction">あおいで涼しくしよう！</div>
+      )}
     </motion.div>
   );
 }

@@ -11,10 +11,12 @@ export function StartScreen({ onStart }: StartScreenProps) {
       <div className="start-screen__content">
         <div className="start-screen__icon-container">
           <Smartphone className="start-screen__icon" />
-          <h1 className="start-screen__title">ファン冷却ゲーム</h1>
-          <p className="start-screen__description">うちわで画像を冷やそう！</p>
+          <h1 className="start-screen__title">開発棟冷却ゲーム</h1>
+          <p className="start-screen__description">
+            うちわで開発棟を冷やそう！
+          </p>
           <p className="start-screen__instruction">
-            うちわをクリックして温度を下げてください
+            スマホを振って温度を下げてください
           </p>
         </div>
 

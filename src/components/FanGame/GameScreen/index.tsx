@@ -70,7 +70,7 @@ export function GameScreen({
       <div className="game-screen__temperature-display">
         <div className="game-screen__temperature-display-label">温度</div>
         <div className="game-screen__temperature-display-value">
-          {Math.round(temperature)}%
+          {Math.round(temperature)}℃
         </div>
       </div>
     </div>

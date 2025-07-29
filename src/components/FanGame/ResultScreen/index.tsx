@@ -40,7 +40,7 @@ export function ResultScreen({ finalTime, onRestart }: ResultScreenProps) {
       <div className="result-screen__modal">
         <div className="result-screen__header">
           <Trophy className="result-screen__trophy" />
-          <h2 className="result-screen__title">ゲーム完了！</h2>
+          <h2 className="result-screen__title">涼しくなりましたね！！</h2>
           <div className="result-screen__emoji">{performance.emoji}</div>
           <p className={`result-screen__performance ${performance.colorClass}`}>
             {performance.message}
