@@ -27,7 +27,7 @@ export const useShake = (options: UseShakeOptions = {}) => {
     } else if (z < -threshold) {
       newState = "left";
     } else {
-      newState = "still";
+      // newState = "still";
     }
 
     // 状態が変化した場合のみ更新

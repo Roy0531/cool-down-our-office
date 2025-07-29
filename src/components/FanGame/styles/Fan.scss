@@ -17,6 +17,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: rotate(180deg);
+    transform-origin: top;
+    transition: transform 0.1s ease-in-out;
+
+    &[data-shake-state="left"] {
+      transform: translateX(-20%) rotate(220deg);
+    }
+    &[data-shake-state="right"] {
+      transform: translateX(20%) rotate(160deg);
+    }
   }
 
   &__handle {

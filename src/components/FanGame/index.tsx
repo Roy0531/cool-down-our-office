@@ -38,7 +38,7 @@ export default function FanGame() {
   // うちわクリック時の冷却
   const coolDown = useCallback(() => {
     if (gameState === "playing") {
-      setTemperature((prev) => Math.max(0, prev - 8));
+      setTemperature((prev) => Math.max(0, prev - 4));
     }
   }, [gameState]);
 

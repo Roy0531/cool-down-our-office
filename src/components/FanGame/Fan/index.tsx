@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, type HTMLAttributes } from "react";
 import "../styles/Fan.scss";
 
 interface FanProps {
@@ -7,7 +7,11 @@ interface FanProps {
   isActive: boolean;
 }
 
-export function Fan({ onClick, isActive }: FanProps) {
+export function Fan({
+  onClick,
+  isActive,
+  ...rest
+}: FanProps & HTMLAttributes<HTMLDivElement>) {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -26,11 +30,9 @@ export function Fan({ onClick, isActive }: FanProps) {
       whileHover={isActive ? { scale: 1.05 } : {}}
       whileTap={isActive ? { scale: 0.95 } : {}}
       onClick={handleClick}>
-      <motion.div
-        animate={isClicked ? { rotate: [-5, 5, -5, 0] } : {}}
-        transition={{ duration: 0.2 }}>
+      <motion.div>
         {/* うちわの柄 */}
-        <div className="fan__container">
+        <div className="fan__container" {...rest}>
           <div className="fan__handle"></div>
 
           {/* うちわの面 */}

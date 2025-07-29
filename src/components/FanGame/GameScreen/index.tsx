@@ -1,5 +1,6 @@
 import { Fan } from "@/components/FanGame/Fan";
 import { TemperatureBar } from "@/components/FanGame/TemperatureBar";
+import { useShake } from "@/feature/useShake";
 import "../styles/GameScreen.scss";
 
 interface GameScreenProps {
@@ -18,6 +19,12 @@ export function GameScreen({
   // 温度に基づいて画像の色味を調整
   const redIntensity = temperature / 100;
   const imageFilter = `hue-rotate(${-120 + redIntensity * 120}deg) saturate(${1 + redIntensity}) brightness(${1 + redIntensity * 0.3})`;
+
+  const { shakeState } = useShake({
+    onLeftToRight: onFanClick,
+    onRightToLeft: onFanClick,
+    threshold: 1.2 // 振りを検出する閾値
+  });
 
   return (
     <div className="game-screen">
@@ -52,7 +59,11 @@ export function GameScreen({
 
       {/* 下部のうちわ */}
       <div className="game-screen__fan">
-        <Fan onClick={onFanClick} isActive={isActive} />
+        <Fan
+          onClick={onFanClick}
+          isActive={isActive}
+          data-shake-state={shakeState}
+        />
       </div>
 
       {/* 温度表示 */}
