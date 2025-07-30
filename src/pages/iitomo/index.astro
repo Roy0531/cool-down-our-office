@@ -1,11 +1,11 @@
 ---
-import { MyApp } from "@/components/MyApp";
+import { Scene } from "@/components/Scene";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
   <main class="wrapper">
-    <MyApp client:load />
+    <Scene client:only="react" />
   </main>
 </Layout>
 
@@ -17,14 +17,5 @@ import Layout from "@/layouts/Layout.astro";
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .title {
-    font-weight: bold;
-    font-size: 2rem;
-  }
-
-  .linkBack {
-    text-decoration: underline;
   }
 </style>
